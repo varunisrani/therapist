@@ -1,26 +1,83 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --foreground: #1a1a1a;
+  --primary: #2563eb;
+  --secondary: #7c3aed;
+  --accent: #f59e0b;
+  --muted: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --premium-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  --premium-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --premium-border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --primary: #3b82f6;
+    --secondary: #8b5cf6;
+    --accent: #f59e0b;
+    --muted: #1e293b;
+    --card-bg: rgba(30, 41, 59, 0.8);
+    --premium-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --premium-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    --premium-border: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.bg-grid {
+  position: relative;
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center;
+}
+
+.dark .bg-grid {
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+}
+
+.premium-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: var(--premium-border);
+  box-shadow: var(--premium-shadow);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--premium-shadow), 0 0 0 1px var(--primary);
+}
+
+.premium-button {
+  background: var(--premium-gradient);
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.premium-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.premium-text {
+  background: var(--premium-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--primary); /* Fallback color using CSS variable for better visibility */
+  font-weight: 600; 
+  text-shadow: 0 0 1px rgba(0,0,0,0.05); /* Subtle text shadow for better readability */
 }
